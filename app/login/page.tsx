@@ -46,13 +46,13 @@ export default function LoginPage() {
             <div className="flex items-center justify-center mb-6">
             <Image 
               src="/logo.png" 
-              alt="Axona Logo" 
+              alt="AXONA Logo" 
               width={80} 
               height={80} 
               className="rounded-full"
             />
             </div>
-          <CardTitle className="text-2xl font-bold text-center">Axona</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">AXONA</CardTitle>
           <CardDescription className="text-center">
             Enter your credentials to access the crash monitoring dashboard
           </CardDescription>

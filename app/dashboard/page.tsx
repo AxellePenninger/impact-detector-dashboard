@@ -31,12 +31,12 @@ export default function DashboardPage() {
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
             <Image 
               src="/logo.png" 
-              alt="Axona Logo" 
+              alt="AXONA Logo" 
               width={40} 
               height={40} 
               className="rounded-full"
             />
-            <span>Axona</span>
+            <span>AXONA</span>
           </Link>
           <nav className="flex flex-1 items-center justify-end space-x-4">
             <Link href="/dashboard" className="text-sm font-medium">
