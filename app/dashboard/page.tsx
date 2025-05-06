@@ -4,6 +4,7 @@ import { CrashDashboard } from "@/components/crash-dashboard"
 import { Button } from "@/components/ui/button"
 import { isLoggedIn, logout } from "@/lib/auth"
 import { LogOut } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
@@ -28,8 +29,14 @@ export default function DashboardPage() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="w-full max-w-[1200px] mx-auto px-4 flex h-14 items-center">
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-            <span className="h-6 w-6 rounded-full bg-red-500"></span>
-            <span>CrashGuard Pro</span>
+            <Image 
+              src="/logo.png" 
+              alt="Axona Logo" 
+              width={40} 
+              height={40} 
+              className="rounded-full"
+            />
+            <span>Axona</span>
           </Link>
           <nav className="flex flex-1 items-center justify-end space-x-4">
             <Link href="/dashboard" className="text-sm font-medium">

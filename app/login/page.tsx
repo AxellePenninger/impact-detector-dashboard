@@ -2,15 +2,16 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { AlertCircle, Lock, User } from "lucide-react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import { setLoggedIn } from "@/lib/auth"
 
 export default function LoginPage() {
@@ -42,12 +43,16 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <div className="flex items-center justify-center mb-6">
-            <div className="h-12 w-12 rounded-full bg-red-500 flex items-center justify-center">
-              <Lock className="h-6 w-6 text-white" />
+            <div className="flex items-center justify-center mb-6">
+            <Image 
+              src="/logo.png" 
+              alt="Axona Logo" 
+              width={80} 
+              height={80} 
+              className="rounded-full"
+            />
             </div>
-          </div>
-          <CardTitle className="text-2xl font-bold text-center">CrashGuard Pro</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Axona</CardTitle>
           <CardDescription className="text-center">
             Enter your credentials to access the crash monitoring dashboard
           </CardDescription>
