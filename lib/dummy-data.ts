@@ -79,176 +79,210 @@ const generateAccelerationData = (peakAcceleration: number) => {
   return dataPoints
 }
 
+// Real cycling teams with their actual riders
+const realTeamsAndRiders = [
+  {
+    name: "UAE Team Emirates",
+    country: "United Arab Emirates",
+    riders: [
+      { name: "Tadej Pogačar", number: 1 },
+      { name: "João Almeida", number: 21 },
+      { name: "Juan Ayuso", number: 22 },
+      { name: "Adam Yates", number: 23 },
+      { name: "Tim Wellens", number: 24 },
+      { name: "Marc Soler", number: 25 },
+      { name: "Pavel Sivakov", number: 26 },
+      { name: "Brandon McNulty", number: 27 }
+    ]
+  },
+  {
+    name: "Visma-Lease a Bike",
+    country: "Netherlands",
+    riders: [
+      { name: "Jonas Vingegaard", number: 11 },
+      { name: "Wout van Aert", number: 12 },
+      { name: "Sepp Kuss", number: 13 },
+      { name: "Christophe Laporte", number: 14 },
+      { name: "Tiesj Benoot", number: 15 },
+      { name: "Matteo Jorgenson", number: 16 },
+      { name: "Dylan van Baarle", number: 17 },
+      { name: "Jan Tratnik", number: 18 }
+    ]
+  },
+  {
+    name: "Ineos Grenadiers",
+    country: "United Kingdom",
+    riders: [
+      { name: "Tom Pidcock", number: 31 },
+      { name: "Geraint Thomas", number: 32 },
+      { name: "Egan Bernal", number: 33 },
+      { name: "Filippo Ganna", number: 34 },
+      { name: "Michał Kwiatkowski", number: 35 },
+      { name: "Ethan Hayter", number: 36 },
+      { name: "Carlos Rodriguez", number: 37 },
+      { name: "Josh Tarling", number: 38 }
+    ]
+  },
+  {
+    name: "Soudal Quick-Step",
+    country: "Belgium",
+    riders: [
+      { name: "Remco Evenepoel", number: 41 },
+      { name: "Julian Alaphilippe", number: 42 },
+      { name: "Kasper Asgreen", number: 43 },
+      { name: "Mikel Honoré", number: 44 },
+      { name: "Yves Lampaert", number: 45 },
+      { name: "Gianni Moscon", number: 46 },
+      { name: "Mauri Vansevenant", number: 47 },
+      { name: "Tim Merlier", number: 48 }
+    ]
+  },
+  {
+    name: "Lidl-Trek",
+    country: "United States",
+    riders: [
+      { name: "Mads Pedersen", number: 51 },
+      { name: "Jasper Stuyven", number: 52 },
+      { name: "Toms Skujiņš", number: 53 },
+      { name: "Giulio Ciccone", number: 54 },
+      { name: "Bauke Mollema", number: 55 },
+      { name: "Quinn Simmons", number: 56 },
+      { name: "Jonathan Milan", number: 57 },
+      { name: "Thibau Nys", number: 58 }
+    ]
+  },
+  {
+    name: "Alpecin-Deceuninck",
+    country: "Belgium",
+    riders: [
+      { name: "Mathieu van der Poel", number: 61 },
+      { name: "Jasper Philipsen", number: 62 },
+      { name: "Xandro Meurisse", number: 63 },
+      { name: "Silvan Dillier", number: 64 },
+      { name: "Gianni Vermeersch", number: 65 },
+      { name: "Jonas Rickaert", number: 66 },
+      { name: "Søren Kragh Andersen", number: 67 },
+      { name: "Kaden Groves", number: 68 }
+    ]
+  }
+];
+
+// Races
+const races = [
+  "Paris-Roubaix",
+  "Tour de France",
+  "Giro d'Italia",
+  "Vuelta a España",
+  "Milan-San Remo",
+  "Liège-Bastogne-Liège",
+  "Tour of Flanders",
+  "Amstel Gold Race",
+  "La Flèche Wallonne",
+  "Strade Bianche",
+];
+
+// Streets/famous segments from these races
+const streets = [
+  "Carrefour de l'Arbre", // Paris-Roubaix
+  "Trouée d'Arenberg", // Paris-Roubaix
+  "Champs-Élysées", // Tour de France
+  "Col du Tourmalet", // Tour de France
+  "Alpe d'Huez", // Tour de France
+  "Mont Ventoux", // Tour de France
+  "Passo dello Stelvio", // Giro d'Italia
+  "Passo di Gavia", // Giro d'Italia
+  "Alto de l'Angliru", // Vuelta
+  "Lagos de Covadonga", // Vuelta
+  "Poggio di San Remo", // Milan-San Remo
+  "Cipressa", // Milan-San Remo
+  "Côte de La Redoute", // Liège-Bastogne-Liège
+  "Côte de Saint-Nicolas", // Liège-Bastogne-Liège
+  "Oude Kwaremont", // Tour of Flanders
+  "Paterberg", // Tour of Flanders
+  "Muur van Geraardsbergen", // Tour of Flanders
+  "Cauberg", // Amstel Gold
+  "Mur de Huy", // La Flèche Wallonne
+  "Sterrato di Montalcino", // Strade Bianche
+];
+
 // Generate dummy data for the dashboard
 export const generateDummyData = () => {
-  // Team names
-  const teamNames = [
-    "Team Velocity",
-    "Rapid Wheels",
-    "Alpine Riders",
-    "Coastal Sprinters",
-    "Mountain Climbers",
-    "Urban Pedalers",
-  ]
-
-  // Cyclist first names
-  const firstNames = [
-    "James",
-    "John",
-    "Robert",
-    "Michael",
-    "William",
-    "David",
-    "Richard",
-    "Joseph",
-    "Thomas",
-    "Charles",
-    "Mary",
-    "Patricia",
-    "Jennifer",
-    "Linda",
-    "Elizabeth",
-    "Barbara",
-    "Susan",
-    "Jessica",
-    "Sarah",
-    "Karen",
-  ]
-
-  // Cyclist last names
-  const lastNames = [
-    "Smith",
-    "Johnson",
-    "Williams",
-    "Brown",
-    "Jones",
-    "Miller",
-    "Davis",
-    "Garcia",
-    "Rodriguez",
-    "Wilson",
-    "Martinez",
-    "Anderson",
-    "Taylor",
-    "Thomas",
-    "Hernandez",
-    "Moore",
-    "Martin",
-    "Jackson",
-    "Thompson",
-    "White",
-  ]
-
-  // Races
-  const races = [
-    "Paris-Roubaix",
-    "Tour de France",
-    "Giro d'Italia",
-    "Vuelta a España",
-    "Milan-San Remo",
-    "Liège-Bastogne-Liège",
-    "Tour of Flanders",
-    "Amstel Gold Race",
-    "La Flèche Wallonne",
-    "Strade Bianche",
-  ]
-
-  // Streets
-  const streets = [
-    "Rue de Rivoli",
-    "Champs-Élysées",
-    "Via Roma",
-    "Carrefour de l'Arbre",
-    "Oude Kwaremont",
-    "Cauberg",
-    "Poggio",
-    "Col du Tourmalet",
-    "Alpe d'Huez",
-    "Passo dello Stelvio",
-    "Mont Ventoux",
-    "Col du Galibier",
-    "Muur van Geraardsbergen",
-    "Koppenberg",
-  ]
-
-  // Countries
-  const countries = [
-    "Belgium",
-    "France",
-    "Italy",
-    "Spain",
-    "Netherlands",
-    "Germany",
-    "United Kingdom",
-    "United States",
-    "Australia",
-    "Colombia",
-  ]
-
-  // Generate teams
-  const teams: TeamData[] = teamNames.map((name, index) => {
-    return {
+  // Generate teams and cyclists based on real data
+  const teams: TeamData[] = realTeamsAndRiders.map((teamInfo, index) => {
+    const team: TeamData = {
       id: `team-${index + 1}`,
-      name,
-      country: countries[randomNumber(0, countries.length - 1)],
-      cyclists: [],
-    }
-  })
-
-  // Generate cyclists and assign to teams
-  let cyclistId = 1
-  teams.forEach((team) => {
-    const numCyclists = randomNumber(5, 10)
-
-    for (let i = 0; i < numCyclists; i++) {
-      const firstName = firstNames[randomNumber(0, firstNames.length - 1)]
-      const lastName = lastNames[randomNumber(0, lastNames.length - 1)]
-
-      const cyclist: CyclistData = {
-        id: `cyclist-${cyclistId}`,
-        name: `${firstName} ${lastName}`,
-        number: randomNumber(1, 99),
-        team: team.name,
-      }
-
-      team.cyclists.push(cyclist)
-      cyclistId++
-    }
-  })
+      name: teamInfo.name,
+      country: teamInfo.country,
+      cyclists: teamInfo.riders.map((rider, riderIndex) => {
+        return {
+          id: `cyclist-${index + 1}-${riderIndex + 1}`,
+          name: rider.name,
+          number: rider.number,
+          team: teamInfo.name
+        };
+      })
+    };
+    return team;
+  });
 
   // Generate crashes
-  const crashes: CrashData[] = []
+  const crashes: CrashData[] = [];
 
-  // Let's make sure each team has multiple crashes
+  // Make sure each team has multiple crashes
   teams.forEach((team) => {
-    // Force between 3-6 crashes per team (adjust these numbers as needed)
-    const numCrashes = randomNumber(3, 6)
+    // Force between 3-6 crashes per team
+    const numCrashes = randomNumber(3, 6);
     
     for (let i = 0; i < numCrashes; i++) {
       // Select a random cyclist from this team
-      const cyclist = team.cyclists[randomNumber(0, team.cyclists.length - 1)]
-      const race = races[randomNumber(0, races.length - 1)]
-      const acceleration = randomNumber(20, 120) + Math.random()
+      const cyclist = team.cyclists[randomNumber(0, team.cyclists.length - 1)];
+      const race = races[randomNumber(0, races.length - 1)];
+      
+      // Choose an appropriate street for the selected race
+      let location;
+      if (race === "Paris-Roubaix") {
+        location = ["Carrefour de l'Arbre", "Trouée d'Arenberg"][randomNumber(0, 1)];
+      } else if (race === "Tour de France") {
+        location = ["Champs-Élysées", "Col du Tourmalet", "Alpe d'Huez", "Mont Ventoux"][randomNumber(0, 3)];
+      } else if (race === "Giro d'Italia") {
+        location = ["Passo dello Stelvio", "Passo di Gavia"][randomNumber(0, 1)];
+      } else if (race === "Vuelta a España") {
+        location = ["Alto de l'Angliru", "Lagos de Covadonga"][randomNumber(0, 1)];
+      } else if (race === "Milan-San Remo") {
+        location = ["Poggio di San Remo", "Cipressa"][randomNumber(0, 1)];
+      } else if (race === "Liège-Bastogne-Liège") {
+        location = ["Côte de La Redoute", "Côte de Saint-Nicolas"][randomNumber(0, 1)];
+      } else if (race === "Tour of Flanders") {
+        location = ["Oude Kwaremont", "Paterberg", "Muur van Geraardsbergen"][randomNumber(0, 2)];
+      } else if (race === "Amstel Gold Race") {
+        location = "Cauberg";
+      } else if (race === "La Flèche Wallonne") {
+        location = "Mur de Huy";
+      } else {
+        location = "Sterrato di Montalcino"; // Strade Bianche
+      }
+      
+      const acceleration = randomNumber(20, 120) + Math.random();
       
       const crash: CrashData = {
         id: `crash-${crashes.length + 1}`,
         cyclist,
-        team: team.name, // Ensure team name is correctly used
+        team: team.name,
         hic: randomNumber(100, 1200),
         bric: randomNumber(50, 500),
         acceleration,
-        location: streets[randomNumber(0, streets.length - 1)],
+        location,
         km: randomNumber(1, 200) + Math.random(),
         race,
         date: randomDate(),
         accelerationData: generateAccelerationData(acceleration),
-      }
+      };
       
-      crashes.push(crash)
+      crashes.push(crash);
     }
-  })
+  });
 
-  return { teams, crashes }
+  return { teams, crashes };
 }
 
 // Create a stable dataset that persists across renders
